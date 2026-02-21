@@ -1,1 +1,57 @@
+body{
+font-family:Tahoma;
+margin:0;
+background:#f4f4f4;
+}
 
+.header{
+background:#ff5722;
+color:white;
+padding:15px;
+font-size:22px;
+}
+
+.menu a{
+color:white;
+margin:10px;
+text-decoration:none;
+}
+
+.container{
+width:90%;
+margin:auto;
+margin-top:20px;
+}
+
+.card{
+width:220px;
+background:white;
+padding:10px;
+margin:10px;
+display:inline-block;
+border-radius:10px;
+box-shadow:0 3px 8px rgba(0,0,0,0.2);
+text-align:center;
+}
+
+.card img{
+width:200px;
+height:200px;
+border-radius:10px;
+}
+
+button{
+background:#ff5722;
+color:white;
+border:none;
+padding:10px;
+border-radius:5px;
+cursor:pointer;
+}
+
+input{
+padding:10px;
+margin:5px;
+border-radius:5px;
+border:1px solid gray;
+}
