@@ -1,20 +1,39 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_login import LoginManager, login_user, login_required, logout_user, current_user
-from werkzeug.security import generate_password_hash, check_password_hash
-from models import db, League, Team, Match, User, BetSlip, BetItem
+from flask import Flask,request,redirect,render_template_string,session
+import sqlite3
 import random
 
-app = Flask(__name__, template_folder='.', static_folder='.')
-app.config['SECRET_KEY'] = 'bet-secret'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app=Flask(__name__)
+app.secret_key="1234"
 
-db.init_app(app)
+######## DATABASE ########
 
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = "login"
+def db():
+    return sqlite3.connect("database.db")
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
+def init():
+
+    con=db()
+
+    con.execute("""
+    CREATE TABLE IF NOT EXISTS users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE,
+    password TEXT,
+    money INTEGER)
+    """)
+
+    con.execute("""
+    CREATE TABLE IF NOT EXISTS products(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    price INTEGER,
+    detail TEXT,
+    image TEXT)
+    """)
+
+    con.execute("""
+    CREATE TABLE IF NOT EXISTS chat(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user TEXT,
+    msg TEXT)
+    """)
