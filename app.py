@@ -1,39 +1,28 @@
-from flask import Flask,request,redirect,render_template_string,session
-import sqlite3
-import random
+from flask import Flask
+from database import init
 
-app=Flask(__name__)
-app.secret_key="1234"
+from home import home_bp
+from shop import shop_bp
+from wallet import wallet_bp
+from profile import profile_bp
+from admin import admin_bp
+from auth import auth_bp
+from game import game_bp
+from chat import chat_bp
 
-######## DATABASE ########
+app = Flask(__name__)
+app.secret_key = "1234"
 
-def db():
-    return sqlite3.connect("database.db")
+init()
 
-def init():
+app.register_blueprint(home_bp)
+app.register_blueprint(shop_bp)
+app.register_blueprint(wallet_bp)
+app.register_blueprint(profile_bp)
+app.register_blueprint(admin_bp)
+app.register_blueprint(auth_bp)
+app.register_blueprint(game_bp)
+app.register_blueprint(chat_bp)
 
-    con=db()
-
-    con.execute("""
-    CREATE TABLE IF NOT EXISTS users(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username TEXT UNIQUE,
-    password TEXT,
-    money INTEGER)
-    """)
-
-    con.execute("""
-    CREATE TABLE IF NOT EXISTS products(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    name TEXT,
-    price INTEGER,
-    detail TEXT,
-    image TEXT)
-    """)
-
-    con.execute("""
-    CREATE TABLE IF NOT EXISTS chat(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user TEXT,
-    msg TEXT)
-    """)
+if __name__ == "__main__":
+    app.run(debug=True)
