@@ -30,3 +30,16 @@ def init():
     user TEXT,
     msg TEXT)
     """)
+
+    con.commit()
+
+    admin=con.execute(
+    "SELECT * FROM users WHERE username='admin'"
+    ).fetchone()
+
+    if not admin:
+        con.execute(
+        "INSERT INTO users(username,password,money) VALUES('admin','1234',1000)"
+        )
+
+        con.commit()
