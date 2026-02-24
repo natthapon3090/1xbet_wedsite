@@ -15,3 +15,11 @@ def init():
     money INTEGER)
     """)
 
+    con.execute("""
+    CREATE TABLE IF NOT EXISTS products(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT,
+    price INTEGER,
+    detail TEXT,
+    image TEXT)
+    """)
