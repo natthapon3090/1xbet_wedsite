@@ -23,3 +23,10 @@ def init():
     detail TEXT,
     image TEXT)
     """)
+
+    con.execute("""
+    CREATE TABLE IF NOT EXISTS chat(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user TEXT,
+    msg TEXT)
+    """)
