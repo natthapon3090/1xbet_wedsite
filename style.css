@@ -1,57 +1,122 @@
-body{
-font-family:Tahoma;
-margin:0;
-background:#f4f4f4;
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Prompt", sans-serif;
 }
 
-.header{
-background:#ff5722;
-color:white;
-padding:15px;
-font-size:22px;
+/* Background */
+body {
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    color: #fff;
+    min-height: 100vh;
 }
 
-.menu a{
-color:white;
-margin:10px;
-text-decoration:none;
+/* Header */
+.header {
+    background: linear-gradient(90deg, #ff512f, #dd2476);
+    padding: 20px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.container{
-width:90%;
-margin:auto;
-margin-top:20px;
+.header a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 12px;
+    font-weight: 600;
+    transition: 0.3s;
 }
 
-.card{
-width:220px;
-background:white;
-padding:10px;
-margin:10px;
-display:inline-block;
-border-radius:10px;
-box-shadow:0 3px 8px rgba(0,0,0,0.2);
-text-align:center;
+.header a:hover {
+    color: #ffe53b;
+    text-shadow: 0 0 10px #ffe53b;
 }
 
-.card img{
-width:200px;
-height:200px;
-border-radius:10px;
+/* Container */
+.container {
+    padding: 30px;
+    animation: fadeIn 1s ease-in-out;
 }
 
-button{
-background:#ff5722;
-color:white;
-border:none;
-padding:10px;
-border-radius:5px;
-cursor:pointer;
+/* Cards */
+.card {
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-input{
-padding:10px;
-margin:5px;
-border-radius:5px;
-border:1px solid gray;
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.7);
+}
+
+.card img {
+    width: 200px;
+    height: 200px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 3px solid #ffe53b;
+}
+
+/* Buttons */
+button {
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+button:hover {
+    background: linear-gradient(90deg, #f7971e, #ffd200);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+}
+
+/* Forms */
+input {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin: 10px 0;
+    width: 250px;
+    outline: none;
+    font-size: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* Headings */
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px #ffe53b;
+}
+
+h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #ffe53b;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
